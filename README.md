@@ -45,6 +45,14 @@ It's best explained by going through the steps `depends.lua` goes through when r
 
 First of all, the default annotations for `depends` and `require` are for [sumneko.lua](https://github.com/sumneko/lua-language-server)'s EmmyLua. As such, my suggestions are also using the same annotations.
 
+## Using Settings
+
+In order for the Lua language server to handle `depends` as though it was `require` all you have to do is define the `Lua.runtime.special` setting containing `"depends": "require"`. This will do exactly that, `depends` will resolve paths to other files and their return values, just like `require` would.
+
+## Not Using Settings
+
+If you don't wish to use the above setting for whichever reason, you can still do this:
+
 In order to get intellisense for the return value of a `depends` call, make a class that matches the string passed to `depends`. I like to do it like this for a file that is required using `depends("my_folder.my_module")`, but you can choose a different approach:
 
 ```lua
